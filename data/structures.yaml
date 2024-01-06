@@ -1,0 +1,60 @@
+root:
+  - domain
+  - entrypoint
+  - infra
+domain:
+  dto:
+    - file:
+        template: domain-dto-atualiza.pjava
+        prefix: Atualiza
+        sufix: DTO
+    - file:
+        template: domain-dto-cadastra.pjava
+        prefix: Cadastra
+        sufix: DTO
+    - file:
+        template: domain-dto-consulta.pjava
+        prefix: Consulta
+        sufix: DTO
+  entity:
+    - file:
+        template: domain-entity.pjava
+        prefix: 
+        sufix: 
+  gateway:
+    - file:
+        template: domain-gateway.pjava
+        prefix: 
+        sufix: 
+  mapper:
+    - file:
+        template: domain-dto-atualiza.pjava
+        prefix: Atualiza
+        sufix: DTOMapper
+    - file:
+        template: domain-mapper-cadastra.pjava
+        prefix: Cadastra
+        sufix: DTOMapper
+  usecase:
+    files:
+      - file:
+          template: domain-usecase-atualiza.pjava
+          prefix: Atualizar
+          sufix: UseCase
+      - file:
+          template: domain-usecase-cadastra.pjava
+          prefix: Cadastrar
+          sufix: UseCase
+      - file:
+          template: domain-usecase-consulta.pjava
+          prefix: Consultar
+          sufix: UseCase
+      - file:
+          template: domain-usecase-consulta_por_id.pjava
+          prefix: Consultar
+          sufix: PorIdUseCase   
+      - file:
+          template: domain-usecase-exclui.pjava
+          prefix: Excluir
+          sufix: PorIdUseCase   
+    
