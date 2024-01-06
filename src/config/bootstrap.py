@@ -1,6 +1,6 @@
 import yaml
 
-from util.util import if_error_exit, if_file_not_exists_exit, file_content
+from util.util import if_error_exit, if_file_not_exists_exit, file_content, if_isnone_exit
 
 
 class Bootstrap:
@@ -40,23 +40,43 @@ class Bootstrap:
     def __datatypes__(self):
         if_error_exit('template' not in self.dados_yaml, ERRO_TEMPLATE)
 
-        def flag(x, y=self.dados_yaml): return y.get(
-            'template', '') == '' or y['template'].get(x) == ''
+        template = self.dados_yaml.get('template', None)
+        if_isnone_exit(template, ERRO_TEMPLATE)
 
-        if_error_exit(flag('language'), ERRO_LANGUAGE)
+        language = template.get('language', None)
+        if_isnone_exit(language, ERRO_LANGUAGE)
 
-        if_error_exit(flag('map_datatype'), ERRO_DATATYPE)
+        map_datatype = template.get('map_datatype', None)
+        if_isnone_exit(map_datatype, ERRO_DATATYPE)
 
-        file_datatype = self.data_path / \
-            self.dados_yaml['template']['language'] / \
-            self.dados_yaml['template']['map_datatype']
-
+        file_datatype = self.data_path / language / map_datatype
         if_file_not_exists_exit(file_datatype)
 
         self.cfg['datatypes'] = file_content(file_datatype)
 
+        file_template = template.get('file_template', None)
+        if_isnone_exit(file_template, ERRO_FILE_TEMPLATE)
+
+        file_template_dir = file_template.get('directory', None)
+        if_isnone_exit(file_template_dir, ERRO_FILE_TEMPLATE_DIR)
+
+        file_template_name = file_template.get('name', None)
+        if_isnone_exit(file_template_name, ERRO_FILE_TEMPLATE_NAME)
+        file_template_name = self.data_path / language / file_template_name
+        if_file_not_exists_exit(file_template_name)
+
+        self.cfg['template'] = {}
+        self.cfg['template']['name'] = file_template_name
+        self.cfg['template']['dir'] = self.data_path / \
+            language / file_template_dir
+
+        print(self.cfg)
+
 
 ERRO_TEMPLATE = "A chave template não foi encontrada no arquivo config.yaml."
 ERRO_FILE_TABLE = "A chave 'file_table' não foi encontrada no arquivo config.yaml."
+ERRO_FILE_TEMPLATE = "A chave 'file_template' não foi encontrada no arquivo config.yaml."
+ERRO_FILE_TEMPLATE_DIR = "A chave 'file_template.directory' não foi encontrada no arquivo config.yaml."
+ERRO_FILE_TEMPLATE_NAME = "A chave 'file_template.name' não foi encontrada no arquivo config.yaml."
 ERRO_LANGUAGE = "A linguagem de geração não está definida no arquivo config.yaml."
 ERRO_DATATYPE = "O arquivo de mapeamento dos datatypes não está definida no arquivo config.yaml."

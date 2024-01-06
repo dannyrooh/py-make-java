@@ -4,3 +4,7 @@ template:
   language: java
   # faz a conversão do tipo configurado em datatype das colunas do arquivo tables.json
   map_datatype: mysql.json
+  #nome do arquivo e onde se encontram os arquivos de template
+  file_template: 
+    name: template.yaml
+    directory: templates

@@ -35,6 +35,12 @@ def if_error_exit(flag_exit: bool, msg_erro):
         sys.exit()
 
 
+def if_isnone_exit(value: bool, msg_erro):
+    if value is None:
+        print(msg_erro)
+        sys.exit()
+
+
 def FILE_NOTFOUND(m): return f"O arquivo '{m}' não foi encontrado."
 
 
