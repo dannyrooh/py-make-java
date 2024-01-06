@@ -1,0 +1,6 @@
+file_table: tables.json 
+template:
+  # diretorio que identifica a linguagem de geração
+  language: java
+  # faz a conversão do tipo configurado em datatype das colunas do arquivo tables.json
+  map_datatype: mysql.json
