@@ -1,0 +1,40 @@
+[
+ 
+    {
+        "table" : "Lookup",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "Genero",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "ClasseProduto",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "Especie",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "Grupo",
+        "columns" : ""
+    }
+
+]

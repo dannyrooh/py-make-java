@@ -1,0 +1,6 @@
+{
+    "smallint" : "Short",
+    "int" : "Integer",
+    "long" : "Long",
+    "varchar" : "String"
+}
