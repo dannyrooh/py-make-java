@@ -1,0 +1,82 @@
+package {package_path}.{path_class};
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Component;
+
+import {package_artefato}.{path_class_entity}.{table_name};
+import {package_artefato}.{path_class_dto_update}.{class_name_dto_update};
+import {package_artefato}.{path_class_dto_insert}.{class_name_dto_insert};
+import {package_artefato}.{path_class_dto_search}.{class_name_dto_search};
+
+import {package_artefato}.{path_class_gateway}.{class_name_gateway};
+import {package_artefato}.{path_class_mapper_jpa_update}.{class_name_mapper_jpa_update};
+import {package_artefato}.{path_class_mapper_jpa_insert}.{class_name_mapper_jpa_insert};
+import {package_artefato}.{path_class_repository}.{class_name_repository};
+import {package_artefato}.{path_class_mapper}.{class_name_mapper};
+
+@Component
+class {class_name} implements {class_name_gateway} {{
+
+    private final {class_name_repository} repository;
+
+    public {class_name}(final {class_name_repository} repository){{
+        this.repository = repository;
+    }}
+    
+    @Override
+	public {table_name} salvar({class_name_dto_insert} dto){{
+
+        var jpa = {class_name_mapper_jpa_insert}.INSTANCE.toJpa(dto);
+
+        var model = repository.save(jpa);
+
+        return {class_name_mapper}.INSTANCE.toEntity(model);  
+
+    }}
+
+    @Override
+	public List<{table_name}> buscar({class_name_dto_search} dto){{
+
+        var lista = repository.findAll();
+
+        return {class_name_mapper}.INSTANCE.toEntityList(lista); 
+
+    }}
+
+    @Override
+	public Optional<{table_name}> buscarPor({datatype_id} id){{
+
+        var optional = repository.findById(id);
+
+		if (optional.isPresent()) {{
+			return Optional.ofNullable({class_name_mapper}.INSTANCE.toEntity(optional.get()));
+		}} else {{
+			return Optional.empty();
+		}}
+    }}
+
+    @Override
+	public {table_name} atualizar({class_name_dto_update} dto){{
+
+        var jpa = {class_name_mapper_jpa_update}.INSTANCE.toJpa(dto);
+
+        var model = repository.save(jpa);
+
+        return {class_name_mapper}.INSTANCE.toEntity(model);  
+
+    }}
+
+    @Override   
+	public boolean excluirPor({datatype_id} id){{
+
+        repository.deleteById(id);
+
+        var optional = repository.findById(id);
+
+        return optional.isEmpty();        
+
+    }}    
+
+}}

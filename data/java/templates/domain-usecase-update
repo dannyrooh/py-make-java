@@ -1,0 +1,10 @@
+package {package_path}.{path_class};
+
+import {package_artefato}.{path_class_request_update}.{class_name_request_update};
+import {package_artefato}.{path_class_response_update}.{class_name_response_update};
+
+public interface {class_name} {{
+
+    {class_name_response_update} atualizar({class_name_request_update} request);
+
+}}

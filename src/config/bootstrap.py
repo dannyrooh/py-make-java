@@ -1,6 +1,7 @@
 import yaml
 
-from util.util import if_error_exit, if_file_not_exists_exit, file_content, if_isnone_exit
+from util.util import if_error_exit, if_file_not_exists_exit,  if_isnone_exit
+from util.file_util import file_content
 
 
 class Bootstrap:
@@ -13,6 +14,7 @@ class Bootstrap:
         self.__config_yaml__()
         self.__table_json__()
         self.__datatypes__()
+        self.__bot__()
 
         return self.cfg
 
@@ -70,7 +72,23 @@ class Bootstrap:
         self.cfg['template']['dir'] = self.data_path / \
             language / file_template_dir
 
-        print(self.cfg)
+    def __bot__(self):
+        if_error_exit('bot' not in self.dados_yaml, ERRO_BOOT)
+
+        bot = self.dados_yaml.get('bot', None)
+        if_isnone_exit(bot, ERRO_BOOT)
+
+        path = bot.get('path', None)
+        if_isnone_exit(path, ERRO_BOT_KEY('path'))
+        module = bot.get('module', None)
+        if_isnone_exit(module, ERRO_BOT_KEY('module'))
+        classe = bot.get('classe', None)
+        if_isnone_exit(classe, ERRO_BOT_KEY('classe'))
+
+        self.cfg['bot'] = {}
+        self.cfg['bot']['path'] = path
+        self.cfg['bot']['module'] = module
+        self.cfg['bot']['classe'] = classe
 
 
 ERRO_TEMPLATE = "A chave template não foi encontrada no arquivo config.yaml."
@@ -80,3 +98,8 @@ ERRO_FILE_TEMPLATE_DIR = "A chave 'file_template.directory' não foi encontrada 
 ERRO_FILE_TEMPLATE_NAME = "A chave 'file_template.name' não foi encontrada no arquivo config.yaml."
 ERRO_LANGUAGE = "A linguagem de geração não está definida no arquivo config.yaml."
 ERRO_DATATYPE = "O arquivo de mapeamento dos datatypes não está definida no arquivo config.yaml."
+ERRO_BOOT = "A chave bot não foi encontrada no arquivo config.yaml."
+
+
+def ERRO_BOT_KEY(
+    k): return f"A chave bot.{k} não foi encontrada no arquivo config.yaml"

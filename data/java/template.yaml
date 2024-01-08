@@ -1,0 +1,307 @@
+root:
+  folders:
+    - folder:
+        name: domain
+        folders:
+          - folder:
+              name: dto
+              files:
+                - file:
+                    template: domain-dto
+                    prefix: Atualiza
+                    sufix: DTO
+                    path: domain/dto
+                    key: dto-update
+                - file:
+                    template: domain-dto
+                    prefix: Cadastra
+                    sufix: DTO
+                    path: domain/dto
+                    key: dto-insert
+                - file:
+                    template: domain-dto
+                    prefix: Consulta
+                    sufix: DTO
+                    path: domain/dto
+                    key: dto-search
+          - folder:
+              name: entity
+              files:
+                - file:
+                    template: domain-dto
+                    prefix: 
+                    sufix: 
+                    path: domain/entity
+                    key: entity
+          - folder:
+              name: gateway
+              files:
+                - file:
+                    template: domain-gateway
+                    prefix: 
+                    sufix: Gateway
+                    path: domain/gateway
+                    key: gateway
+          - folder:
+              name: mapper
+              files:
+                - file:
+                    template: domain-mapper-update
+                    prefix: Atualiza
+                    sufix: DTOMapper
+                    path: domain/mapper
+                    key: mapper-update
+                - file:
+                    template: domain-mapper-insert
+                    prefix: Cadastra
+                    sufix: DTOMapper
+                    path: domain/mapper
+                    key: mapper-insert
+                - file:
+                    template: domain-mapper-search
+                    prefix: Consulta
+                    sufix: DTOMapper
+                    path: domain/mapper
+                    key: mapper-search
+          - folder:
+              name: usecase
+              files:
+                - file:
+                    template: domain-usecase-update
+                    prefix: Atualiza
+                    sufix: UseCase
+                    path: domain/usecase
+                    key: usecase-update
+                - file:
+                    template: domain-usecase-insert
+                    prefix: Cadastra
+                    sufix: UseCase
+                    path: domain/usecase
+                    key: usecase-insert
+                - file:
+                    template: domain-usecase-search
+                    prefix: Consulta
+                    sufix: UseCase
+                    path: domain/usecase
+                    key: usecase-search
+                - file:
+                    template: domain-usecase-searchid
+                    prefix: Consulta
+                    sufix: PorIdUseCase   
+                    path: domain/usecase
+                    key: usecase-searchid
+                - file:
+                    template: domain-usecase-delete
+                    prefix: Exclui
+                    sufix: PorIdUseCase
+                    path: domain/usecase
+                    key: usecase-delete
+              folders:
+                - folder:
+                    name: impl
+                    files:
+                      - file:
+                          template: domain-usecase-impl-update
+                          prefix: Atualiza
+                          sufix: UseCaseImpl
+                          path: domain/usecase/impl
+                          key: usecase-ompl-update
+                      - file:
+                          template: domain-usecase-impl-insert
+                          prefix: Cadastra
+                          sufix: UseCaseImpl
+                          path: domain/usecase/impl
+                          key: usecase-impl-insert
+                      - file:
+                          template: domain-usecase-impl-search
+                          prefix: Consulta
+                          sufix: UseCaseImpl
+                          path: domain/usecase/impl
+                          key: usecase-impl-search
+                      - file:
+                          template: domain-usecase-impl-searchid
+                          prefix: Consulta
+                          sufix: PorIdUseCaseImpl   
+                          path: domain/usecase/impl
+                          key: usecase-impl-searchid
+                      - file:
+                          template: domain-usecase-impl-delete
+                          prefix: Exclui
+                          sufix: PorIdUseCaseImpl
+                          path: domain/usecase/impl
+                          key: usecase-impl-delete
+                - folder: 
+                    name: request
+                    files:
+                      - file:
+                          template: domain-dto
+                          prefix: Atualiza
+                          sufix: Request
+                          path: domain/usecase/request
+                          key: request-update
+                      - file:
+                          template: domain-dto
+                          prefix: Cadastra
+                          sufix: Request
+                          path: domain/usecase/request
+                          key: request-insert
+                      - file:
+                          template: domain-dto
+                          prefix: Consulta
+                          sufix: Request     
+                          path: domain/usecase/request
+                          key: request-search
+                - folder:
+                    name: response
+                    folders: 
+                      - folder: 
+                          name: mapper
+                          files:
+                            - file:
+                                template: domain-usecase-response-mapper-update
+                                prefix: Atualiza
+                                sufix: ResponseMapper
+                                path: domain/usecase/response/mapper
+                                key: mapper-response-update
+                            - file:
+                                template: domain-usecase-response-mapper-insert
+                                prefix: Cadastra
+                                sufix: ResponseMapper
+                                path: domain/usecase/response/mapper
+                                key: mapper-response-insert
+                            - file:
+                                template: domain-usecase-response-mapper-search
+                                prefix: Consulta
+                                sufix: ResponseMapper
+                                path: domain/usecase/response/mapper
+                                key: mapper-response-search
+                    files:
+                      - file:
+                          template: domain-dto
+                          prefix: Atualiza
+                          sufix: Response
+                          path: domain/usecase/response
+                          key: response-update
+                      - file:
+                          template: domain-dto
+                          prefix: Cadastra
+                          sufix: Response
+                          path: domain/usecase/response
+                          key: response-insert
+                      - file:
+                          template: domain-dto
+                          prefix: Consulta
+                          sufix: Response                    
+                          path: domain/usecase/response
+                          key: response-search
+          - folder:
+              name: exception
+              files:
+                - file:
+                    template: domain-exception-business
+                    prefix: Business
+                    sufix: Exception
+                    fix: true
+                    path: domain/exception
+                    key: exception-business
+                - file:
+                    template: domain-exception-nocontent
+                    prefix: NoContent
+                    sufix: Exception
+                    fix: true
+                    path: domain/exception
+                    key: exception-nocontent
+    - folder:
+        name: entrypoint
+        folders:
+            - folder:
+                name: config
+                files:
+                  - file:
+                      template: entrypoint-config-controller_avisor
+                      prefix: Controller
+                      sufix: Advisor
+                      fix: true
+                      path:  entrypoint/config
+                      key: entrypoint-config-controller_avisor
+                  - file:
+                      template: entrypoint-config-cross_config
+                      prefix: Cross
+                      sufix: Config
+                      fix: true                
+                      path: entrypoint/config
+                      key: entrypoint-config-cross_config
+            - folder:
+                name: rest
+                files:
+                  - file:
+                      template: entrypoint-rest-rest_controller
+                      prefix: 
+                      sufix: RestController
+                      path: entrypoint/rest
+                      key: entrypoint-rest-rest_controller
+    - folder:
+        name: infra
+        folders:
+          - folder:
+              name: dataprovider
+              files:
+                  - file:
+                      template: infra-dataprovider-dataprovider
+                      prefix: 
+                      sufix: DataProvider   
+                      path: infra/dataprovider
+                      key: infra-dataprovider-dataprovider
+          - folder:
+              name: jpa
+              folders:
+                - folder:
+                    name: entity
+                    folders:
+                      - folder:
+                          name: mapper
+                          files:
+                            - file:
+                                template: infra-jpa-entity-mapper-update
+                                prefix: Atualiza
+                                sufix: JpaMapper
+                                path: infra/jpa/entity/mapper
+                                key: mapper-jpa-update
+                            - file:
+                                template: infra-jpa-entity-mapper-insert
+                                prefix: Cadastra
+                                sufix: JpaMapper
+                                path: infra/jpa/entity/mapper
+                                key: mapper-jpa-insert
+                            - file:
+                                template: infra-jpa-entity-mapper-search
+                                prefix: Consulta
+                                sufix: JpaMapper
+                                path: infra/jpa/entity/mapper
+                                key: mapper-jpa-search
+                    files:
+                    - file:
+                        template: infra-jpa-entity
+                        prefix:
+                        sufix: Jpa
+                        path: infra/jpa/entity
+                        key: entity-jpa
+                - folder:
+                    name: repository
+                    files:
+                      - file: 
+                          template: infra-jpa-repository
+                          prefix:
+                          sufix: Repository
+                          path: infra/jpa/repository
+                          key: repository
+          - folder:
+              name: mapper
+              files:
+                - file:
+                    template: infra-mapper-mapper
+                    prefix:
+                    sufix: Mapper
+                    path: infra/mapper
+                    key: mapper
+

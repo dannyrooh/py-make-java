@@ -1,0 +1,9 @@
+package {package_path}.{path_class};
+
+
+
+public interface {class_name} {{
+
+    void excluirPor({datatype_id} id);
+
+}}

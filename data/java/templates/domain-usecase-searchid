@@ -1,0 +1,9 @@
+package {package_path}.{path_class};
+
+import {package_artefato}.{path_class_response_search}.{class_name_response_search};
+
+public interface {class_name}  {{
+
+    {class_name_response_search} buscarPor({datatype_id} id);
+
+}}

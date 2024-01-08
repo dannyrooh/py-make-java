@@ -1,4 +1,5 @@
 HELP.md
+TASK.md
 
 ### STS ###
 .apt_generated
@@ -13,3 +14,4 @@ HELP.md
 ### VS Code ###
 .vscode/
 venv/
+tmp/

@@ -1,0 +1,30 @@
+package {package_path}.{path_class};
+
+import {package_path}.{path_class_gateway}.{class_name_gateway};
+import {package_path}.{path_class_exception_business}.{class_name_exception_business};
+
+import {package_path}.{path_class_usecase_delete}.{class_name_usecase_delete};
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class {class_name} implements {class_name_usecase_delete} {{
+
+    private final {class_name_gateway} gateway;
+
+    public {class_name}(final {class_name_gateway} gateway) {{
+
+        this.gateway = gateway;
+
+    }}
+
+    @Override
+    public void excluirPor({datatype_id} id) {{
+
+        var excluido = this.gateway.excluirPor(id);
+        if (!excluido) {{
+            throw new {class_name_exception_business}();
+        }}
+    }}
+
+}}

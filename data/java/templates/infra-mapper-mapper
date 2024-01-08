@@ -1,0 +1,19 @@
+package {package_path}.{path_class};
+
+import java.util.List;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import {package_path}.{path_class_entity}.{class_name_entity};
+import {package_path}.{path_class_entity_jpa}.{class_name_entity_jpa};
+
+@Mapper(componentModel = "spring")
+public interface {class_name} {{
+
+    {class_name} INSTANCE = Mappers.getMapper({class_name}.class);
+
+    public {class_name_entity} toEntity({class_name_entity_jpa} jpa);
+
+    List<{class_name_entity}> toEntityList(List<{class_name_entity_jpa}> jpa);
+
+}}

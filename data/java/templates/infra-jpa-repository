@@ -1,0 +1,9 @@
+package {package_path}.{path_class};
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import {package_path}.{path_class_entity_jpa}.{class_name_entity_jpa};
+
+public interface {class_name}  extends JpaRepository<{class_name_entity_jpa},  {datatype_id}> {{
+
+}}

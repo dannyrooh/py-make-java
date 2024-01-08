@@ -1,0 +1,34 @@
+package {package_path}.{path_class};
+
+import {package_path}.{path_class_gateway}.{class_name_gateway};
+import {package_path}.{path_class_mapper_update}.{class_name_mapper_update};
+import {package_path}.{path_class_usecase_update}.{class_name_usecase_update};
+import {package_path}.{path_class_request_update}.{class_name_request_update};
+import {package_path}.{path_class_response_update}.{class_name_response_update};
+import {package_path}.{path_class_mapper_response_update}.{class_name_mapper_response_update};
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class {class_name} implements {class_name_usecase_update} {{
+
+    private final {class_name_gateway} gateway;
+
+    public {class_name}(final {class_name_gateway} gateway) {{
+
+        this.gateway = gateway;
+
+    }}
+
+    @Override
+    public {class_name_response_update} atualizar({class_name_request_update} request) {{
+     
+        var dto = {class_name_mapper_update}.INSTANCE.toDTO(request);
+
+        var entity = gateway.atualizar(dto);
+
+        return {class_name_mapper_response_update}.INSTANCE.toResponse(entity);
+
+    }}
+
+}}

@@ -1,0 +1,18 @@
+package {package_path}.{path_class};
+
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import {package_path}.{path_class_entity}.{class_name_entity};
+import {package_path}.{path_class_response_update}.{class_name_response_update};
+
+@Mapper(componentModel = "spring")
+public interface {class_name} {{
+
+    {class_name} INSTANCE = Mappers.getMapper( {class_name}.class );
+
+    {class_name_response_update} toResponse({class_name_entity} entity);
+
+}}
+
