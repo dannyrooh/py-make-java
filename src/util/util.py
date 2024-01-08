@@ -2,19 +2,6 @@ import re
 import sys
 
 
-def file_content(filepath, msg_erro=None):
-    try:
-        file = open(filepath, 'r')
-        file_content = file.read()
-
-        if not (file_content):
-            raise Exception(
-                msg_erro if msg_erro is None else f'Arquivo não encontrado /n {filepath}')
-
-        return file_content
-    finally:
-        file.close()
-
 
 def camelCase(s):
     words = s.split('_')

@@ -1,6 +1,15 @@
 [
  
     {
+        "table" : "Atuacao",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+
+    {
         "table" : "Lookup",
         "columns" : [
             {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },

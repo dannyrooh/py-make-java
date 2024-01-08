@@ -1,0 +1,10 @@
+package {package_path}.{path_class};
+
+import {package_artefato}.{path_class_request_insert}.{class_name_request_insert};
+import {package_artefato}.{path_class_response_insert}.{class_name_response_insert};
+
+public interface {class_name} {{
+
+    {class_name_response_insert} cadastrar({class_name_request_insert} request);
+
+}}

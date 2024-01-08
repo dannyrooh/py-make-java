@@ -8,3 +8,20 @@ template:
   file_template: 
     name: template.yaml
     directory: templates
+
+  # configuraç~eos para salver os arquivos  
+  file_save:
+    ext: java
+    directory:
+
+  # variáveis definida nos templtes com seus valores default
+  variaveis:
+    - variavel:
+        key: package_path
+        value: com.dannyrooh.
+
+# onde esta o bot que faz a interprertação dos templates:
+bot:
+  path: bot/jawa/parse_java.py
+  module: bot.jawa.parse_java
+  classe: ParseJava

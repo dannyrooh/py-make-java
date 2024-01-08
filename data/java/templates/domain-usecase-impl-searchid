@@ -1,0 +1,35 @@
+package {package_path}.{path_class};
+
+import {package_path}.{path_class_exception_nocontent}.{class_name_exception_nocontent};
+import {package_path}.{path_class_gateway}.{class_name_gateway};
+import {package_path}.{path_class_usecase_searchid}.{class_name_usecase_searchid};
+import {package_path}.{path_class_response_search}.{class_name_response_search};
+import {package_path}.{path_class_mapper_response_search}.{class_name_mapper_response_search};
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class {class_name} implements {class_name_usecase_searchid} {{
+
+    private final {class_name_gateway} gateway;
+
+    public {class_name}(final {class_name_gateway} gateway) {{
+
+        this.gateway = gateway;
+
+    }}
+
+    @Override
+    public {class_name_response_search} buscarPor( {datatype_id} id) {{
+     
+        var optional = gateway.buscarPor(id);
+
+        if (optional.isPresent()) {{
+            return {class_name_mapper_response_search}.INSTANCE.toResponse(optional.get());
+        }} else {{
+            throw new {class_name_exception_nocontent}();
+        }}
+
+    }}
+
+}}

@@ -1,0 +1,35 @@
+package {package_path}.{path_class};
+
+import java.util.List;
+
+import {package_path}.{path_class_gateway}.{class_name_gateway};
+import {package_path}.{path_class_mapper_search}.{class_name_mapper_search};
+import {package_path}.{path_class_usecase_search}.{class_name_usecase_search};
+import {package_path}.{path_class_response_search}.{class_name_response_search};
+import {package_path}.{path_class_mapper_response_search}.{class_name_mapper_response_search};
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class {class_name} implements {class_name_usecase_search} {{
+
+    private final {class_name_gateway} gateway;
+
+    public {class_name}(final {class_name_gateway} gateway) {{
+
+        this.gateway = gateway;
+
+    }}
+
+    @Override
+    public List<{class_name_response_search}> buscar() {{
+     
+        var dto = {class_name_mapper_search}.INSTANCE.toDTO(null);
+
+        var entityList = gateway.buscar(dto);
+
+        return {class_name_mapper_response_search}.INSTANCE.toResponseList(entityList);
+
+    }}
+
+}}

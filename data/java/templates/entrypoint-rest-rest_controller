@@ -1,0 +1,84 @@
+package {package_path}.{path_class};
+
+
+import {package_path}.{path_class_usecase_update}.{class_name_usecase_update};
+import {package_path}.{path_class_usecase_insert}.{class_name_usecase_insert};
+import {package_path}.{path_class_usecase_search}.{class_name_usecase_search};
+import {package_path}.{path_class_usecase_search}.{class_name_usecase_searchid};
+import {package_path}.{path_class_usecase_delete}.{class_name_usecase_delete};
+
+import {package_path}.{path_class_request_update}.{class_name_request_update};
+import {package_path}.{path_class_request_insert}.{class_name_request_insert};
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+
+@RestController
+@RequestMapping("{table_name_lower}")
+public class {class_name} {{
+
+    private final {class_name_usecase_insert} usecase_cadastra;
+    private final {class_name_usecase_update} usecase_atualiza;
+    private final {class_name_usecase_search} usecase_busca;
+    private final {class_name_usecase_searchid} usecase_buscaporid;
+    private final {class_name_usecase_delete} usecase_delete;
+
+    public {class_name}(final {class_name_usecase_insert} usecase_cadastra,
+                              final {class_name_usecase_update} usecase_atualiza,
+                              final {class_name_usecase_search} usecase_busca,
+                              final {class_name_usecase_searchid} usecase_buscaporid,
+                              final {class_name_usecase_delete} usecase_delete) {{
+        this.usecase_cadastra = usecase_cadastra;
+        this.usecase_atualiza = usecase_atualiza;
+        this.usecase_busca = usecase_busca;
+        this.usecase_buscaporid = usecase_buscaporid;
+        this.usecase_delete = usecase_delete;
+    }}
+
+    @PostMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> cadastrar(@Valid @RequestBody final {class_name_request_insert} request) {{
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(usecase_cadastra.cadastrar(request));
+
+    }}
+
+    @PatchMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> atualizar(@Valid @RequestBody final {class_name_request_update} request) {{
+
+        return ResponseEntity.ok(usecase_atualiza.atualizar(request));
+
+    }}
+
+    @GetMapping(path = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> buscar() {{
+
+        return ResponseEntity.ok(usecase_busca.buscar());
+
+    }}
+
+    @GetMapping(path = "{{id}}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> buscarPor(@PathVariable {datatype_id} id) {{
+
+        return ResponseEntity.ok(usecase_buscaporid.buscarPor(id));
+
+    }}
+
+    @DeleteMapping(path = "{{id}}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> excluirPor(@PathVariable {datatype_id} id) {{
+
+        usecase_delete.excluirPor(id);
+        return ResponseEntity.noContent().build();
+
+    }}
+}}

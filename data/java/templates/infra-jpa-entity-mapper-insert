@@ -1,0 +1,18 @@
+package {package_path}.{path_class};
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import {package_artefato}.{path_class_dto_insert}.{class_name_dto_insert};
+import {package_artefato}.{path_class_entity_jpa}.{class_name_entity_jpa}; 
+
+@Mapper(componentModel = "spring")
+public interface {class_name} {{
+
+    {class_name}  INSTANCE = Mappers.getMapper( {class_name} .class );
+
+
+    {class_name_entity_jpa} toJpa({class_name_dto_insert} dto);
+
+}}
+

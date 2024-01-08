@@ -1,0 +1,19 @@
+package {package_path}.{path_class};
+
+import java.util.List;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import {package_artefato}.{path_class_entity}.{class_name_entity};
+import {package_artefato}.{path_class_response_search}.{class_name_response_search};
+
+@Mapper(componentModel = "spring")
+public interface {class_name} {{
+
+    {class_name} INSTANCE = Mappers.getMapper({class_name}.class);
+
+    List<{class_name_response_search}> toResponseList(List<{class_name_entity}> entity);
+
+    {class_name_response_search} toResponse({class_name_entity} entity);
+
+}}

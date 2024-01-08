@@ -1,0 +1,23 @@
+package {package_path}.{path_class};
+
+import java.util.List;
+import java.util.Optional;
+
+import {package_artefato}.{path_class_entity}.{table_name};
+import {package_artefato}.{path_class_dto_update}.{class_name_dto_update};
+import {package_artefato}.{path_class_dto_insert}.{class_name_dto_insert};
+import {package_artefato}.{path_class_dto_search}.{class_name_dto_search};
+
+public interface {class_name} {{
+    
+	{table_name} salvar({class_name_dto_insert} dto);
+
+	List<{table_name}> buscar({class_name_dto_search} dto);
+
+	Optional<{table_name}> buscarPor({datatype_id} id);
+
+	{table_name} atualizar({class_name_dto_update} dto);
+
+	boolean excluirPor({datatype_id} id);    
+
+}}
