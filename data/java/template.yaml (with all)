@@ -194,43 +194,43 @@ root:
                           sufix: Response                    
                           path: domain/usecase/response
                           key: response-search
-        #   - folder:
-        #       name: exception
-        #       files:
-        #         - file:
-        #             template: domain-exception-business
-        #             prefix: Business
-        #             sufix: Exception
-        #             fix: true
-        #             path: domain/exception
-        #             key: exception-business
-        #         - file:
-        #             template: domain-exception-nocontent
-        #             prefix: NoContent
-        #             sufix: Exception
-        #             fix: true
-        #             path: domain/exception
-        #             key: exception-nocontent
+          - folder:
+              name: exception
+              files:
+                - file:
+                    template: domain-exception-business
+                    prefix: Business
+                    sufix: Exception
+                    fix: true
+                    path: domain/exception
+                    key: exception-business
+                - file:
+                    template: domain-exception-nocontent
+                    prefix: NoContent
+                    sufix: Exception
+                    fix: true
+                    path: domain/exception
+                    key: exception-nocontent
     - folder:
         name: entrypoint
         folders:
-            # - folder:
-            #     name: config
-            #     files:
-            #       - file:
-            #           template: entrypoint-config-controller_avisor
-            #           prefix: Controller
-            #           sufix: Advisor
-            #           fix: true
-            #           path:  entrypoint/config
-            #           key: entrypoint-config-controller_avisor
-            #       - file:
-            #           template: entrypoint-config-cross_config
-            #           prefix: Cross
-            #           sufix: Config
-            #           fix: true                
-            #           path: entrypoint/config
-            #           key: entrypoint-config-cross_config
+            - folder:
+                name: config
+                files:
+                  - file:
+                      template: entrypoint-config-controller_avisor
+                      prefix: Controller
+                      sufix: Advisor
+                      fix: true
+                      path:  entrypoint/config
+                      key: entrypoint-config-controller_avisor
+                  - file:
+                      template: entrypoint-config-cross_config
+                      prefix: Cross
+                      sufix: Config
+                      fix: true                
+                      path: entrypoint/config
+                      key: entrypoint-config-cross_config
             - folder:
                 name: rest
                 files:

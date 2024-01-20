@@ -8,6 +8,14 @@ class ParseJava(ParserBase):
 
         super().execute(config)
 
+        # variaveis personalizaveis
+        self.var_template['path_class_exception_nocontent'] = 'br.com.klabin.florestal.matrizinsumos.share.exception'
+        self.var_template['class_name_exception_nocontent'] = 'NoContentException'
+
+        self.var_template['path_class_exception_business'] = 'br.com.klabin.florestal.matrizinsumos.share.exception'
+        self.var_template['class_name_exception_business'] = 'BusinessException'
+
+        #variaveis conforme o template.yaml
         self.__preecher_var__(self.table.name)
         self.var_template['body'] = self.__body_columns__()
         self.var_template['body_jpa'] = self.__body_jpa__()
@@ -18,6 +26,8 @@ class ParseJava(ParserBase):
 
         self.var_template['table_name'] = self.table.name
         self.var_template['table_name_lower'] = self.table.name.lower()
+
+        
 
         for r in self.templates:
             path = Path(r.path)

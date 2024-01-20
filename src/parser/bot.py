@@ -28,5 +28,5 @@ class Bot():
         config['templates'] = templates
         config['table'] = table
         config['path_destiny'] = path_destiny
-        config['package_path'] = ''
+        config['package_path'] = 'br.com.klabin.florestal.matrizinsumos.lookup'
         instancia.execute(config)

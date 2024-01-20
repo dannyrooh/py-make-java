@@ -1,0 +1,21 @@
+tables:
+  - table:
+    name: contato
+    description: Tabela base de contatos
+    columns:
+      - column: 
+          name: Id
+          datatype: bigint
+          not_null: true
+          atributos:
+            - primary-key
+            - auto-increment
+      - column: 
+          name: tipo
+          datatype: varchar
+          size: 50
+          not_null: true
+          atributos:
+            - unique-key
+          
+          

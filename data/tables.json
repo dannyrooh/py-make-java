@@ -8,23 +8,6 @@
 
         ]
     },
-
-    {
-        "table" : "Lookup",
-        "columns" : [
-            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
-            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
-
-        ]
-    },
-    {
-        "table" : "Genero",
-        "columns" : [
-            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
-            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
-
-        ]
-    },
     {
         "table" : "ClasseProduto",
         "columns" : [
@@ -34,7 +17,7 @@
         ]
     },
     {
-        "table" : "Especie",
+        "table" : "ClasseToxicologia",
         "columns" : [
             {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
             {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
@@ -42,8 +25,247 @@
         ]
     },
     {
-        "table" : "Grupo",
-        "columns" : ""
-    }
+        "table" : "ClasseToxicologica",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nivel", "datatype" : "varchar(10)", "attribute" : "unique_key" , "nn" : true }
 
-]
+        ]
+    },
+    {
+        "table" : "Documento",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(250)", "attribute" : "" , "nn" : true },
+            {"name" : "Extensao", "datatype" : "varchar(10)", "attribute" : "" , "nn" : false },
+            {"name" : "Caminho", "datatype" : "varchar(500)", "attribute" : "" , "nn" : true },
+            {"name" : "Checksum", "datatype" : "varchar(64)", "attribute" : "" , "nn" : false }
+        ]
+
+    },
+    {
+        "table" : "EpocaAplicacao",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nivel", "datatype" : "varchar(10)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    
+
+    {
+        "table" : "Especie",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true },
+            {"name" : "NomeCientifico", "datatype" : "varchar(100)", "attribute" : "" , "nn" : false },
+            {"name" : "IdGenero", "datatype" : "smalint", "attribute" : "foreign_key:Genero(Id)" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "Genero",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nivel", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "Grupo",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nivel", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "InformacaoAdicional",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true },
+            {"name" : "Descricao", "datatype" : "varchar(500)", "attribute" : "" , "nn" : true },
+            {"name" : "Tipo", "datatype" : "smalint", "attribute" : "" , "nn" : true },
+            {"name" : "Obrigatorio", "datatype" : "smalint", "attribute" : "" , "nn" : true },
+            {"name" : "ListaOpcoes", "datatype" : "varchar(1000)", "attribute" : "" , "nn" : false },
+            {"name" : "TamanhoMaximo", "datatype" : "smalint", "attribute" : "" , "nn" : null }
+
+        ]
+    },
+    {
+        "table" : "InformacaoAdicionalDaninha",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nivel", "datatype" : "varchar(50)", "attribute" : "" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "InformacaoAdicionalMatriz",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(100)", "attribute" : "" , "nn" : true },
+            {"name" : "Valor", "datatype" : "varchar(1000)", "attribute" : "" , "nn" : true },
+            {"name" : "Tipo", "datatype" : "smalint", "attribute" : "" , "nn" : true },
+            {"name" : "IdMatriz", "datatype" : "int", "attribute" : "primary_key, foreign_key:Matriz(Id)" , "nn" : true },
+            {"name" : "IdInformacaoAdicional", "datatype" : "int", "attribute" : "primary_key, foreign_key:InformacaoAdicional(Id)" , "nn" : true }
+        ]
+    },
+    {
+        "table" : "Matriz",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "IdEspecie", "datatype" : "int", "attribute" : "foreign_key:Especie(Id)" , "nn" : true },
+            {"name" : "IdProduto", "datatype" : "int", "attribute" : "foreign_key:Produto(Id)" , "nn" : true },
+            {"name" : "IdTipoManifestacao", "datatype" : "smallint", "attribute" : "foreign_key:TipoManifestacao(Id)" , "nn" : false },
+            {"name" : "IdTipoSolo", "datatype" : "smallint", "attribute" : "foreign_key:TipoSolo(Id)" , "nn" : false },
+            {"name" : "DoseHa", "datatype" : "float(10,20)", "attribute" : "" , "nn" : false },
+            {"name" : "CustoHa", "datatype" : "float(10,20)", "attribute" : "" , "nn" : false },
+            {"name" : "RecomendaçãoTecnica", "datatype" : "varchar(1000)", "attribute" : "" , "nn" : false },
+            {"name" : "Versao", "datatype" : "varchar(20)", "attribute" : "" , "nn" : false },
+            {"name" : "Ativa", "datatype" : "Blob", "attribute" : "" , "nn" : false }
+        ]
+    },
+    {
+        "table" : "MatrizDocumento",
+        "columns" : [
+            {"name" : "IdMatriz", "datatype" : "int", "attribute" : "primary_key,foreign_key:Matriz(Id)" , "nn" : true },
+            {"name" : "IdDocumento", "datatype" : "int", "attribute" : "primary_key,foreign_key:Documento(Id)" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "MatrizPlantaDaninha",
+        "columns" : [
+            {"name" : "IdMatriz", "datatype" : "int", "attribute" : "primary_key,foreign_key:Matriz(Id)" , "nn" : true },
+            {"name" : "IdPlantaDaninha", "datatype" : "int", "attribute" : "primary_key,foreign_key:PlantaDaninha(Id)" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "ModelAuxiliarIdNomeUtil",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "ModoAcao",
+        "columns" : [
+            {"name" : "Id", "datatype" : "smallint", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "NivelPericulosidade",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "NivelPericulosidadeAmbiental",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nivel", "datatype" : "varchar(10)", "attribute" : "" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "PlantaDaninha",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(100)", "attribute" : "" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "Produto",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "NomeComercial", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true },
+            {"name" : "IngredienteAtivo", "datatype" : "varchar(150)", "attribute" : "" , "nn" : true },
+            {"name" : "IdModoAcao", "datatype" : "smallint", "attribute" : "foreign_key:ModoAcao(Id)" , "nn" : true },
+            {"name" : "IdEpocaAplicacao", "datatype" : "smallint", "attribute" : "foreign_key:EpocaAplicacao(Id)" , "nn" : true },
+            {"name" : "IdClasseProduto", "datatype" : "smallint", "attribute" : "foreign_key:ClasseProduto(Id)" , "nn" : true },
+            {"name" : "IdTipoInfluenciaSolo", "datatype" : "smallint", "attribute" : "foreign_key:TipoInfluenciaSolo(Id)" , "nn" : true },
+            {"name" : "IdTipoLixiviacao", "datatype" : "smallint", "attribute" : "foreign_key:TipoLixiviacao(Id)" , "nn" : false },
+            {"name" : "IdTipoPersistencia", "datatype" : "smallint", "attribute" : "foreign_key:TipoPersistencia(Id)" , "nn" : false },
+            {"name" : "IdNivelPericulosidadeAmbiental", "datatype" : "smallint", "attribute" : "foreign_key:TipoPersistencia(Id)" , "nn" : true },
+            {"name" : "IdClasseToxicologica", "datatype" : "smallint", "attribute" : "foreign_key:ClasseToxicologica(Id)" , "nn" : true },
+            {"name" : "ResumoAras", "datatype" : "varchar(5000)", "attribute" : "" , "nn" : false },
+            {"name" : "AcaoManejoAras", "datatype" : "varchar(5000)", "attribute" : "" , "nn" : false },
+            {"name" : "AcaoSocialAras", "datatype" : "varchar(5000)", "attribute" : "" , "nn" : false },
+            {"name" : "MeiaVida", "datatype" : "smallint", "attribute" : "" , "nn" : false }
+        ]
+    },
+    {
+        "table" : "ProdutoTipoRiscoPotencial",
+        "columns" : [
+            {"name" : "IdProduto", "datatype" : "int", "attribute" : "primary_key,foreign_key:Produto(Id)" , "nn" : true },
+            {"name" : "IdTipoRiscoPotencial", "datatype" : "int", "attribute" : "primary_key,foreign_key:TipoRiscoPotencial(Id)" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "TipoInfestacao",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "TipoInfluenciaSolo",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "TipoLixiviacao",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },
+    {
+        "table" : "TipoManifestacao",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "" , "nn" : true }
+
+        ]
+    },   
+    {
+        "table" : "TipoPersistencia",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },         
+    {
+        "table" : "TipoRiscoPotencial",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "primary_key" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(150)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    },    
+    {
+        "table" : "TipoSolo",
+        "columns" : [
+            {"name" : "Id", "datatype" : "int", "attribute" : "auto_increment" , "nn" : true },
+            {"name" : "Nome", "datatype" : "varchar(50)", "attribute" : "unique_key" , "nn" : true }
+
+        ]
+    }      
+]    
+
+
