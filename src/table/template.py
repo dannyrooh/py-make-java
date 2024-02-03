@@ -13,15 +13,15 @@ class TemplateRow:
         self.ext = ext
 
     # retorna o nome do template
-    def getClassName(self, tableName):
+    def get_class_name(self, table_name):
         prefix = '' if self.prefix is None else self.prefix
         sufix = '' if self.sufix is None else self.sufix
-        table_name = '' if self.fix else tableName
+        table_name = '' if self.fix else table_name
         return f'{prefix}{table_name}{sufix}'
 
-    def getFileName(self, tableName):
+    def get_file_name(self, table_name):
         ext = '' if self.ext is None else self.ext
-        return f'{self.getClassName(tableName)}{ext}'
+        return f'{self.get_class_name(table_name)}{ext}'
 
 
 class Template:

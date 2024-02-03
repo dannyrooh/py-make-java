@@ -1,4 +1,4 @@
-file_table: tables.json 
+file_table: klabin/tables.json 
 template:
   # diretorio que identifica a linguagem de geração
   language: java
@@ -9,7 +9,8 @@ template:
     name: template.yaml
     directory: templates
 
-  # configuraç~eos para salver os arquivos  
+  # configuraç~eos para salver os arquivos   
+   
   file_save:
     ext: java
     directory:
@@ -18,10 +19,14 @@ template:
   variaveis:
     - variavel:
         key: package_path
-        value: com.dannyrooh.
+        value: br.com.klabin.florestal.matrizinsumos
+    - variavel:
+        key: share-exception
+        value: br.com.klabin.florestal.matrizinsumos
+
 
 # onde esta o bot que faz a interprertação dos templates:
 bot:
   path: bot/jawa/parse_java.py
   module: bot.jawa.parse_java
-  classe: ParseJava
+  classe: ParseJava 

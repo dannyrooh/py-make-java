@@ -19,7 +19,7 @@ root:
                     path: domain/dto
                     key: dto-insert
                 - file:
-                    template: domain-dto
+                    template: domain-dto-search
                     prefix: Consulta
                     sufix: DTO
                     path: domain/dto
@@ -44,6 +44,7 @@ root:
                     key: gateway
           - folder:
               name: mapper
+              test: enable
               files:
                 - file:
                     template: domain-mapper-update
@@ -134,19 +135,19 @@ root:
                     name: request
                     files:
                       - file:
-                          template: domain-dto
+                          template: domain-request
                           prefix: Atualiza
                           sufix: Request
                           path: domain/usecase/request
                           key: request-update
                       - file:
-                          template: domain-dto
+                          template: domain-request
                           prefix: Cadastra
                           sufix: Request
                           path: domain/usecase/request
                           key: request-insert
                       - file:
-                          template: domain-dto
+                          template: domain-usecase-request-search
                           prefix: Consulta
                           sufix: Request     
                           path: domain/usecase/request
@@ -177,19 +178,19 @@ root:
                                 key: mapper-response-search
                     files:
                       - file:
-                          template: domain-dto
+                          template: domain-response
                           prefix: Atualiza
                           sufix: Response
                           path: domain/usecase/response
                           key: response-update
                       - file:
-                          template: domain-dto
+                          template: domain-response
                           prefix: Cadastra
                           sufix: Response
                           path: domain/usecase/response
                           key: response-insert
                       - file:
-                          template: domain-dto
+                          template: domain-response
                           prefix: Consulta
                           sufix: Response                    
                           path: domain/usecase/response
@@ -295,6 +296,12 @@ root:
                           sufix: Repository
                           path: infra/jpa/repository
                           key: repository
+                      - file: 
+                          template: infra-jpa-query-search
+                          prefix:
+                          sufix: QueryBusca
+                          path: infra/jpa/repository
+                          key: query-search
           - folder:
               name: mapper
               files:

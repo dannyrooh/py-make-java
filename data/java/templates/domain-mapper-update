@@ -6,7 +6,6 @@ import org.mapstruct.factory.Mappers;
 import {package_artefato}.{path_class_dto_update}.{class_name_dto_update};
 import {package_artefato}.{path_class_request_update}.{class_name_request_update};
 
-
 @Mapper(componentModel = "spring")
 public interface {class_name}{{
 

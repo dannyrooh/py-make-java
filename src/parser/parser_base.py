@@ -14,17 +14,17 @@ class ParserBase:
         self.table = config['table']
         self.datatypes = config['datatypes']
 
-    def file_create(self, fileName, contentBody=None, sobrescrever=True):
+    def file_create(self, file_name, content_body=None, sobrescrever=True):
         util = FileUtil(self.path_destiny, sobrescrever)
-        return util.create(fileName,
-                           '' if contentBody is None else contentBody)
+        return util.create(file_name,
+                           '' if content_body is None else content_body)
 
-    def load_file(self, filePath):
-        if_file_not_exists_exit(filePath)
-        return file_content(filePath)
+    def load_file(self, file_path):
+        if_file_not_exists_exit(file_path)
+        return file_content(file_path)
 
-    def parse_template(self, filePath):
-        template = self.load_file(filePath)
+    def parse_template(self, file_path):
+        template = self.load_file(file_path)
         var_mapper = {}
         for k, v in self.var_template.items():
             x = "{"+k+"}"
@@ -33,16 +33,18 @@ class ParserBase:
         if len(var_mapper) == 0:
             return template
         else:
-            contentBody = template.format(**var_mapper)
-            return contentBody
+            content_body = template.format(**var_mapper)
+            return content_body
         
     def __column_data__(self, column):
         nn = 'false' if column.nn else 'true'
         length = ''
-        if (not column.size is None) and (column.size > 0):
+        if (column.size is not None) and (column.size > 0):
             length = f' , length = {column.size}'
 
-        return f'@Column(name = "{column.name}", nullable = {nn}{length})'        
+        name =  column.name if column.entity is None else column.entity
+
+        return f'@Column(name = "{name}", nullable = {nn}{length})'        
 
     def __body_columns__(self, cadastra=False):
         column_util = ColumnUtil(self.datatypes)
@@ -59,7 +61,8 @@ class ParserBase:
             self.cols += f'{IDENT}{value}\n'
 
         for column in self.table.columns:
-            if column.name.lower() == 'id':
+            name =  column.name if column.entity is None else column.entity
+            if name.lower() == 'id':
                 add('@Id')
                 if column.auto_increment:
                     add('@GeneratedValue(strategy = GenerationType.IDENTITY)')
@@ -77,7 +80,8 @@ class ParserBase:
         column_util = ColumnUtil(self.datatypes)
         did = ''
         for column in self.table.columns:
-            if (column.name.lower() == 'id'):
+            name =  column.name if column.entity is None else column.entity
+            if (name.lower() == 'id' ):
                 did = column_util.data_type(column.datatype)
                 break
 

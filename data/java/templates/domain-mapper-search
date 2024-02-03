@@ -1,6 +1,5 @@
 package {package_path}.{path_class};
 
-import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -13,7 +12,5 @@ public interface {class_name} {{
     {class_name} INSTANCE = Mappers.getMapper({class_name}.class);
 
     {class_name_dto_search} toDTO({class_name_request_search} request);
-
-    List<{class_name_dto_search}> toDTOList(List<{class_name_request_search}> request);
 
 }}

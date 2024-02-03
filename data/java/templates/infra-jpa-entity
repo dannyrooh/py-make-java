@@ -1,5 +1,5 @@
 package {package_path}.{path_class};
-
+{import_header}
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,9 +1,21 @@
 package {package_path}.{path_class};
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import {package_path}.{path_class_entity_jpa}.{class_name_entity_jpa};
 
 public interface {class_name}  extends JpaRepository<{class_name_entity_jpa},  {datatype_id}> {{
+
+    @Query(value = {class_name_query_search}.SELECT,
+            countQuery = {class_name_query_search}.COUNT,
+            nativeQuery = true)
+    Page<{class_name_entity_jpa}> buscar(
+            @Param("id") {datatype_id} id,
+            @Param("nome") String nome,
+            Pageable paginacao );    
 
 }}

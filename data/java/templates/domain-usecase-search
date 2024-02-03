@@ -1,11 +1,13 @@
 package {package_path}.{path_class};
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+
 import {package_artefato}.{path_class_response_search}.{class_name_response_search};
+import {package_artefato}.{path_class_request_search}.{class_name_request_search};
 
 public interface {class_name} {{
 
-    List<{class_name_response_search}> buscar();
+    Page<{class_name_response_search}> buscar({class_name_request_search} request);
 
 }}
 

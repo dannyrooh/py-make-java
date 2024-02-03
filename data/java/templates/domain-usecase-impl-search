@@ -1,15 +1,18 @@
 package {package_path}.{path_class};
 
-import java.util.List;
-
+import {package_path}.{class_name_exception_nocontent};
 import {package_path}.{path_class_gateway}.{class_name_gateway};
 import {package_path}.{path_class_mapper_search}.{class_name_mapper_search};
 import {package_path}.{path_class_usecase_search}.{class_name_usecase_search};
 import {package_path}.{path_class_response_search}.{class_name_response_search};
+import {package_path}.{path_class_request_search}.{class_name_request_search};
 import {package_path}.{path_class_mapper_response_search}.{class_name_mapper_response_search};
+import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class {class_name} implements {class_name_usecase_search} {{
 
@@ -22,13 +25,17 @@ public class {class_name} implements {class_name_usecase_search} {{
     }}
 
     @Override
-    public List<{class_name_response_search}> buscar() {{
+    public Page<{class_name_response_search}> buscar({class_name_request_search} request) {{
+
+        log.info("Busca tabela {table_name} com paginação" );
      
-        var dto = {class_name_mapper_search}.INSTANCE.toDTO(null);
+        var dto = {class_name_mapper_search}.INSTANCE.toDTO(request);
 
-        var entityList = gateway.buscar(dto);
+        var response = gateway.buscar(dto).map({class_name_mapper_response_search}.INSTANCE::toResponse);;
+        
+        if (response.isEmpty()) {{ throw new NoContentException(); }};
 
-        return {class_name_mapper_response_search}.INSTANCE.toResponseList(entityList);
+        return response;
 
     }}
 

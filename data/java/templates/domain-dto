@@ -1,5 +1,5 @@
 package {package_path}.{path_class};
-
+{import_header}
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

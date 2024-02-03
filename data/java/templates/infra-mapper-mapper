@@ -1,6 +1,6 @@
 package {package_path}.{path_class};
 
-import java.util.List;
+import org.mapstruct.Mapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -12,8 +12,9 @@ public interface {class_name} {{
 
     {class_name} INSTANCE = Mappers.getMapper({class_name}.class);
 
+    @Mapping(source = "id", target = "id")
+	@Mapping(source = "nome", target = "nome")
     public {class_name_entity} toEntity({class_name_entity_jpa} jpa);
 
-    List<{class_name_entity}> toEntityList(List<{class_name_entity_jpa}> jpa);
 
 }}

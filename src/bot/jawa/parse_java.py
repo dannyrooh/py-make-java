@@ -9,10 +9,10 @@ class ParseJava(ParserBase):
         super().execute(config)
 
         # variaveis personalizaveis
-        self.var_template['path_class_exception_nocontent'] = 'br.com.klabin.florestal.matrizinsumos.share.exception'
+        self.var_template['path_class_exception_nocontent'] = 'share.exception'
         self.var_template['class_name_exception_nocontent'] = 'NoContentException'
 
-        self.var_template['path_class_exception_business'] = 'br.com.klabin.florestal.matrizinsumos.share.exception'
+        self.var_template['path_class_exception_business'] = 'share.exception'
         self.var_template['class_name_exception_business'] = 'BusinessException'
 
         #variaveis conforme o template.yaml
@@ -27,19 +27,19 @@ class ParseJava(ParserBase):
         self.var_template['table_name'] = self.table.name
         self.var_template['table_name_lower'] = self.table.name.lower()
 
-        
+        self.var_template['import_header'] = self.__import_header__(self.var_template['body'])        
 
         for r in self.templates:
             path = Path(r.path)
             path_class = r.path.replace('/', '.')
-            print(r.name)
+            # print(r.name)
 
-            self.var_template['class_name'] = r.getClassName(self.table.name)
+            self.var_template['class_name'] = r.get_class_name(self.table.name)
             self.var_template['path_class'] = path_class
             self.var_template['mapper_ignore_id'] = ''
 
             template = self.parse_template(r.name)
-            self.file_create(path / r.getFileName(self.table.name), template)
+            self.file_create(path / r.get_file_name(self.table.name), template)
             # print(r.name)
 
     def __preecher_var__(self, table_name):
@@ -49,4 +49,10 @@ class ParseJava(ParserBase):
             path_class = f'path_class_{key}'
             class_name = f'class_name_{key}'
             self.var_template[path_class] = r.path.replace('/', '.')
-            self.var_template[class_name] = r.getClassName(table_name)
+            self.var_template[class_name] = r.get_class_name(table_name)
+
+    def __import_header__(self,body):
+        result = ""
+        if "private LocalDateTime" in body:
+            result += "\nimport java.time.LocalDateTime;"
+        return result

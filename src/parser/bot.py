@@ -5,7 +5,7 @@ class Bot():
     def __init__(self, config):
         self.config = config
 
-    def execute(self, templates, path_destiny, table, datatypes):
+    def execute(self, templates, path_destiny, table, datatypes, package_path):
         # Nome do módulo e nome da classe
         # modulo_nome = "bot.jawa.parse_java"
         # classe_nome = "ParseJava"
@@ -28,5 +28,6 @@ class Bot():
         config['templates'] = templates
         config['table'] = table
         config['path_destiny'] = path_destiny
-        config['package_path'] = 'br.com.klabin.florestal.matrizinsumos.lookup'
+        config['package_path'] = package_path
+
         instancia.execute(config)

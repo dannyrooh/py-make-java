@@ -1,6 +1,11 @@
 {
     "smallint" : "Short",
     "int" : "Integer",
+    "integer" : "Integer",
     "long" : "Long",
-    "varchar" : "String"
+    "varchar" : "String",
+    "bit": "Boolean",
+    "json": "String",
+    "timestamp": "LocalDateTime",
+    "float": "Float"
 }
